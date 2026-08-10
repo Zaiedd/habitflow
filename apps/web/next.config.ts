@@ -1,10 +1,11 @@
 import type { NextConfig } from "next";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH;
+const isStaticExport = Boolean(basePath);
 
 const nextConfig: NextConfig = {
-  output: "export",
-  trailingSlash: true,
+  output: isStaticExport ? "export" : undefined,
+  trailingSlash: isStaticExport,
   ...(basePath ? { basePath } : {}),
 };
 
