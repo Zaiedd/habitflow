@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { AuthModule } from './modules/auth/auth.module';
+import { BillingModule } from './modules/billing/billing.module';
 import { CategoriesModule } from './modules/categories/categories.module';
 import { EventsModule } from './modules/events/events.module';
 import { GamificationModule } from './modules/gamification/gamification.module';
@@ -16,6 +17,7 @@ import { WellnessModule } from './modules/wellness/wellness.module';
     ConfigModule.forRoot({ isGlobal: true }),
     HealthModule,
     AuthModule,
+    BillingModule,
     CategoriesModule,
     HabitsModule,
     GoalsModule,

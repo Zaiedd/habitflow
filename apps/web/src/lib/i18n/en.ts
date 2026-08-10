@@ -161,6 +161,10 @@ export const en = {
     monthly: "Monthly",
     annual: "Annual",
     billingPeriod: "Billing period",
+    checkoutLoading: "Redirecting…",
+    demoNotice: "Create a real account to start your trial.",
+    errorNetwork: "We couldn't reach the billing service. Please try again.",
+    errorGeneric: "We couldn't start your checkout. Please try again.",
   },
   planItems: [
     {

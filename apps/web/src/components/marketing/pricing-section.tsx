@@ -2,8 +2,11 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { Check } from "lucide-react";
 import { BillingToggle } from "@/components/marketing/billing-toggle";
+import { createCheckoutSession } from "@/lib/api";
+import { getSession } from "@/lib/session";
 import { useLocale } from "@/lib/i18n/locale-context";
 import { localizePath } from "@/lib/i18n/config";
 import { cn } from "@/lib/utils";
@@ -14,14 +17,49 @@ const PRICES = [
   { monthly: 16, annual: 12 },
 ];
 
+const PLAN_CODES = ["free", "pro", "family"] as const;
+
 export function PricingSection() {
   const { locale, dict } = useLocale();
+  const router = useRouter();
   const [billing, setBilling] = useState<"monthly" | "annual">("annual");
+  const [loading, setLoading] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   const plans = dict.planItems.map((plan, index) => ({
     ...plan,
     ...PRICES[index],
+    code: PLAN_CODES[index],
   }));
+
+  async function handleCheckout(plan: "pro" | "family") {
+    const session = getSession();
+    if (!session) {
+      router.push(localizePath(locale, "/register"));
+      return;
+    }
+    if (session.demo) {
+      setError(dict.pricing.demoNotice);
+      return;
+    }
+    setLoading(plan);
+    setError(null);
+    const interval = billing === "annual" ? "year" : "month";
+    const result = await createCheckoutSession(
+      session.tokens.accessToken,
+      plan,
+      interval,
+      locale,
+    );
+    setLoading(null);
+    if (result.ok) {
+      window.location.assign(result.data.url);
+    } else if (result.kind === "network") {
+      setError(dict.pricing.errorNetwork);
+    } else if (result.kind === "http") {
+      setError(dict.pricing.errorGeneric);
+    }
+  }
 
   return (
     <section id="pricing" className="scroll-mt-24 py-24 sm:py-32">
@@ -42,6 +80,12 @@ export function PricingSection() {
         <div className="mt-14 grid gap-6 lg:grid-cols-3">
           {plans.map((plan) => {
             const price = billing === "annual" ? plan.annual : plan.monthly;
+            const buttonBase = cn(
+              "mt-6 inline-flex h-11 items-center justify-center rounded-lg text-sm font-medium transition-all active:scale-[0.98]",
+              plan.featured
+                ? "bg-primary text-primary-foreground shadow-soft hover:bg-primary-hover"
+                : "border border-border bg-surface text-foreground shadow-soft hover:bg-muted",
+            );
             return (
               <div
                 key={plan.name}
@@ -85,17 +129,30 @@ export function PricingSection() {
                     {dict.pricing.freeForever}
                   </p>
                 )}
-                <Link
-                  href={localizePath(locale, "/register")}
-                  className={cn(
-                    "mt-6 inline-flex h-11 items-center justify-center rounded-lg text-sm font-medium transition-all active:scale-[0.98]",
-                    plan.featured
-                      ? "bg-primary text-primary-foreground shadow-soft hover:bg-primary-hover"
-                      : "border border-border bg-surface text-foreground shadow-soft hover:bg-muted",
-                  )}
-                >
-                  {plan.cta}
-                </Link>
+                {plan.code === "free" ? (
+                  <Link
+                    href={localizePath(locale, "/register")}
+                    className={buttonBase}
+                  >
+                    {plan.cta}
+                  </Link>
+                ) : (
+                  <button
+                    type="button"
+                    onClick={() =>
+                      handleCheckout(plan.code as "pro" | "family")
+                    }
+                    disabled={loading !== null}
+                    className={cn(
+                      buttonBase,
+                      loading === plan.code && "pointer-events-none opacity-70",
+                    )}
+                  >
+                    {loading === plan.code
+                      ? dict.pricing.checkoutLoading
+                      : plan.cta}
+                  </button>
+                )}
                 <ul className="mt-7 space-y-3">
                   {plan.features.map((feature) => (
                     <li key={feature} className="flex items-start gap-2.5">
@@ -113,6 +170,15 @@ export function PricingSection() {
             );
           })}
         </div>
+
+        {error ? (
+          <p
+            role="alert"
+            className="mt-8 text-center text-sm font-medium text-danger"
+          >
+            {error}
+          </p>
+        ) : null}
       </div>
     </section>
   );

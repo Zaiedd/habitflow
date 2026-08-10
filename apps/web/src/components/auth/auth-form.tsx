@@ -120,6 +120,8 @@ export function AuthForm({
       return;
     }
 
+    if (result.kind !== "http") return;
+
     setFormState("error");
     if (result.status === 401) setError(auth.invalidCredentials);
     else if (result.status === 409) setError(auth.emailTaken);

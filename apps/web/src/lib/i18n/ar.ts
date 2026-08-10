@@ -161,6 +161,10 @@ export const ar: Dictionary = {
     monthly: "شهري",
     annual: "سنوي",
     billingPeriod: "فترة الدفع",
+    checkoutLoading: "جارٍ التحويل…",
+    demoNotice: "أنشئ حسابًا حقيقيًا لبدء تجربتك.",
+    errorNetwork: "تعذّر الوصول إلى خدمة الدفع. حاول مرة أخرى.",
+    errorGeneric: "تعذّر بدء عملية الدفع. حاول مرة أخرى.",
   },
   planItems: [
     {

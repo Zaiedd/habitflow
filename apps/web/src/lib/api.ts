@@ -4,7 +4,8 @@ export const API_URL =
 export type ApiResult<T> =
   | { ok: true; data: T }
   | { ok: false; kind: "http"; status: number; code?: string }
-  | { ok: false; kind: "network" };
+  | { ok: false; kind: "network" }
+  | { ok: false; kind: "demo" };
 
 export interface AuthUser {
   id: string;
@@ -28,15 +29,33 @@ export interface AuthResponse {
   tokens: AuthTokens;
 }
 
+export interface BillingSubscription {
+  id: string;
+  planCode: string;
+  status: string;
+  currentPeriodEnd: string | null;
+  cancelAt: string | null;
+}
+
+export interface SubscriptionInfo {
+  plan: string;
+  subscription: BillingSubscription | null;
+}
+
 async function request<T>(
   path: string,
   init: RequestInit,
+  token?: string,
 ): Promise<ApiResult<T>> {
   let res: Response;
   try {
     res = await fetch(`${API_URL}${path}`, {
       ...init,
-      headers: { "Content-Type": "application/json", ...init.headers },
+      headers: {
+        "Content-Type": "application/json",
+        ...(token ? { Authorization: `Bearer ${token}` } : {}),
+        ...init.headers,
+      },
     });
   } catch {
     return { ok: false, kind: "network" };
@@ -101,4 +120,31 @@ export function resetPassword(token: string, password: string) {
     method: "POST",
     body: JSON.stringify({ token, password }),
   });
+}
+
+export function getSubscription(token: string) {
+  return request<SubscriptionInfo>("/billing/subscription", {
+    method: "GET",
+  }, token);
+}
+
+export function createCheckoutSession(
+  token: string,
+  plan: "pro" | "family",
+  interval: "month" | "year",
+  locale: string,
+) {
+  return request<{ url: string }>(
+    "/billing/checkout",
+    { method: "POST", body: JSON.stringify({ plan, interval, locale }) },
+    token,
+  );
+}
+
+export function createPortalSession(token: string) {
+  return request<{ url: string }>(
+    "/billing/portal",
+    { method: "POST" },
+    token,
+  );
 }

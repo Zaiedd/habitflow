@@ -6,6 +6,9 @@ import {
   resendVerification,
   resetPassword,
   verifyEmail,
+  createCheckoutSession,
+  createPortalSession,
+  getSubscription,
   API_URL,
 } from "./api";
 
@@ -189,5 +192,110 @@ describe("api client", () => {
         body: JSON.stringify({ email: "a@b.c", locale: "ar" }),
       }),
     );
+  });
+
+  it("getSubscription sends the bearer token", async () => {
+    const fetchMock = mockFetchResponse({
+      plan: "PRO_MONTHLY",
+      subscription: {
+        id: "sub1",
+        planCode: "PRO_MONTHLY",
+        status: "ACTIVE",
+        currentPeriodEnd: null,
+        cancelAt: null,
+      },
+    });
+
+    const result = await getSubscription("access-token");
+
+    expect(fetchMock).toHaveBeenCalledWith(
+      `${API_URL}/billing/subscription`,
+      expect.objectContaining({
+        method: "GET",
+        headers: expect.objectContaining({
+          Authorization: "Bearer access-token",
+        }),
+      }),
+    );
+    expect(result.ok).toBe(true);
+  });
+
+  it("createCheckoutSession posts plan, interval and locale with auth", async () => {
+    const fetchMock = mockFetchResponse({
+      url: "https://checkout.stripe.com/c/pay",
+    });
+
+    const result = await createCheckoutSession(
+      "access-token",
+      "family",
+      "year",
+      "ar",
+    );
+
+    expect(fetchMock).toHaveBeenCalledWith(
+      `${API_URL}/billing/checkout`,
+      expect.objectContaining({
+        method: "POST",
+        headers: expect.objectContaining({
+          Authorization: "Bearer access-token",
+        }),
+        body: JSON.stringify({
+          plan: "family",
+          interval: "year",
+          locale: "ar",
+        }),
+      }),
+    );
+    expect(result).toEqual({
+      ok: true,
+      data: { url: "https://checkout.stripe.com/c/pay" },
+    });
+  });
+
+  it("createPortalSession returns the portal url", async () => {
+    const fetchMock = mockFetchResponse({
+      url: "https://billing.stripe.com/p/session",
+    });
+
+    const result = await createPortalSession("access-token");
+
+    expect(fetchMock).toHaveBeenCalledWith(
+      `${API_URL}/billing/portal`,
+      expect.objectContaining({
+        method: "POST",
+        headers: expect.objectContaining({
+          Authorization: "Bearer access-token",
+        }),
+      }),
+    );
+    expect(result.ok).toBe(true);
+  });
+
+  it("maps a billing checkout failure to an http error", async () => {
+    mockFetchResponse({ message: "PRICE_NOT_CONFIGURED" }, 400);
+
+    const result = await createCheckoutSession(
+      "access-token",
+      "pro",
+      "month",
+      "en",
+    );
+
+    expect(result).toEqual({
+      ok: false,
+      kind: "http",
+      status: 400,
+      code: "PRICE_NOT_CONFIGURED",
+    });
+  });
+
+  it("maps a billing network failure to a network error", async () => {
+    vi.spyOn(globalThis, "fetch").mockRejectedValue(
+      new TypeError("Failed to fetch"),
+    );
+
+    const result = await createPortalSession("access-token");
+
+    expect(result).toEqual({ ok: false, kind: "network" });
   });
 });
