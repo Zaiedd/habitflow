@@ -12,6 +12,13 @@ export const en = {
     coachTitle: "Coach",
     insightsTitle: "Insights",
     profileTitle: "Profile",
+    forgotPasswordTitle: "Reset your password",
+    forgotPasswordDescription: "Get a link to reset your HabitFlow password.",
+    resetPasswordTitle: "Choose a new password",
+    resetPasswordDescription: "Set a new password for your HabitFlow account.",
+    verifyEmailTitle: "Verify your email",
+    verifyEmailDescription:
+      "Confirm your email address to activate your HabitFlow account.",
   },
   nav: {
     features: "Features",
@@ -301,6 +308,7 @@ export const en = {
       passwordPlaceholder: "••••••••",
       noAccount: "No account?",
       createOne: "Create one",
+      forgot: "Forgot password?",
     },
     register: {
       title: "Create your account",
@@ -314,6 +322,49 @@ export const en = {
       passwordPlaceholder: "At least 8 characters",
       haveAccount: "Already have an account?",
       signIn: "Sign in",
+      verifyNotice:
+        "We sent you a verification link — check your inbox. Your account stays active, but verifying confirms it's really you.",
+    },
+    forgotPassword: {
+      title: "Reset your password",
+      subtitle: "Enter your email and we'll send you a reset link.",
+      email: "Email",
+      emailPlaceholder: "you@example.com",
+      submit: "Send reset link",
+      sentTitle: "Check your inbox",
+      sentBody:
+        "If an account exists for that email, a password reset link is on its way. It expires in 1 hour.",
+      demoNotice:
+        "Demo mode — the API isn't reachable here. Start it with `npm run dev` and the reset link is printed to the API console.",
+      backToLogin: "Back to sign in",
+    },
+    resetPassword: {
+      title: "Choose a new password",
+      subtitle: "Enter a new password for your account.",
+      password: "New password",
+      passwordPlaceholder: "At least 8 characters",
+      confirmPassword: "Confirm password",
+      confirmPlaceholder: "Repeat your password",
+      mismatch: "Passwords don't match.",
+      submit: "Reset password",
+      successTitle: "Password updated",
+      successBody:
+        "Your password has been changed and all your sessions were signed out.",
+      invalidToken: "This reset link is invalid or has expired.",
+      backToLogin: "Sign in",
+    },
+    verifyEmail: {
+      verifying: "Verifying your email…",
+      successTitle: "Email verified",
+      successBody: "Your email is confirmed. You can now sign in.",
+      errorTitle: "Verification failed",
+      errorBody: "This link is invalid or has expired.",
+      resend: "Resend verification email",
+      resendSent:
+        "If an account exists for that email, a new verification link is on its way.",
+      backToLogin: "Go to sign in",
+      demoNotice:
+        "Demo mode — email verification needs the real API server running with a database.",
     },
   },
   preview: {

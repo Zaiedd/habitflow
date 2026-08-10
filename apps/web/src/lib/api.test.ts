@@ -1,5 +1,13 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { login, register, API_URL } from "./api";
+import {
+  forgotPassword,
+  login,
+  register,
+  resendVerification,
+  resetPassword,
+  verifyEmail,
+  API_URL,
+} from "./api";
 
 function mockFetchResponse(
   body: unknown,
@@ -124,5 +132,62 @@ describe("api client", () => {
     const result = await login("a@b.c", "x");
 
     expect(result.ok).toBe(true);
+  });
+
+  it("forgotPassword posts email and locale", async () => {
+    const fetchMock = mockFetchResponse({ sent: true });
+
+    const result = await forgotPassword("a@b.c", "en");
+
+    expect(fetchMock).toHaveBeenCalledWith(
+      `${API_URL}/auth/forgot-password`,
+      expect.objectContaining({
+        method: "POST",
+        body: JSON.stringify({ email: "a@b.c", locale: "en" }),
+      }),
+    );
+    expect(result).toEqual({ ok: true, data: { sent: true } });
+  });
+
+  it("resetPassword posts token and password", async () => {
+    const fetchMock = mockFetchResponse({ ok: true });
+
+    const result = await resetPassword("abc123", "NewPassword123!");
+
+    expect(fetchMock).toHaveBeenCalledWith(
+      `${API_URL}/auth/reset-password`,
+      expect.objectContaining({
+        body: JSON.stringify({
+          token: "abc123",
+          password: "NewPassword123!",
+        }),
+      }),
+    );
+    expect(result).toEqual({ ok: true, data: { ok: true } });
+  });
+
+  it("verifyEmail posts the token", async () => {
+    const fetchMock = mockFetchResponse({ verified: true });
+
+    const result = await verifyEmail("abc123");
+
+    expect(fetchMock).toHaveBeenCalledWith(
+      `${API_URL}/auth/verify-email`,
+      expect.objectContaining({ body: JSON.stringify({ token: "abc123" }) }),
+    );
+    expect(result).toEqual({ ok: true, data: { verified: true } });
+  });
+
+  it("resendVerification posts email and locale", async () => {
+    const fetchMock = mockFetchResponse({ sent: true });
+
+    await resendVerification("a@b.c", "ar");
+
+    expect(fetchMock).toHaveBeenCalledWith(
+      `${API_URL}/auth/verify-email/resend`,
+      expect.objectContaining({
+        body: JSON.stringify({ email: "a@b.c", locale: "ar" }),
+      }),
+    );
   });
 });

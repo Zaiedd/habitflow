@@ -57,6 +57,7 @@ export function AuthForm({
   fields,
   footer,
   mode,
+  passwordHint,
 }: {
   title: string;
   subtitle: string;
@@ -64,6 +65,7 @@ export function AuthForm({
   fields: Field[];
   footer: React.ReactNode;
   mode: "login" | "register";
+  passwordHint?: React.ReactNode;
 }) {
   const { locale, dict } = useLocale();
   const auth = dict.auth;
@@ -222,6 +224,10 @@ export function AuthForm({
                   ) : null}
                 </div>
               ) : null}
+
+              {isPassword && passwordHint ? (
+                <div className="mt-2 text-end">{passwordHint}</div>
+              ) : null}
             </div>
           );
         })}
@@ -236,7 +242,17 @@ export function AuthForm({
           </div>
         ) : null}
 
-        {formState === "success" ? (
+        {formState === "success" && mode === "register" ? (
+          <div
+            role="status"
+            className="flex items-start gap-2.5 rounded-lg border border-info/30 bg-info-soft p-3 text-sm text-info"
+          >
+            <Info className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
+            <p>{auth.register.verifyNotice}</p>
+          </div>
+        ) : null}
+
+        {formState === "success" && mode === "login" ? (
           <div
             role="status"
             className="flex items-start gap-2.5 rounded-lg border border-success/30 bg-success-soft p-3 text-sm text-success"

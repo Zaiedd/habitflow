@@ -14,6 +14,12 @@ export const ar: Dictionary = {
     coachTitle: "المدرب",
     insightsTitle: "التحليلات",
     profileTitle: "الملف الشخصي",
+    forgotPasswordTitle: "استعادة كلمة المرور",
+    forgotPasswordDescription: "احصل على رابط لإعادة تعيين كلمة مرور HabitFlow.",
+    resetPasswordTitle: "اختر كلمة مرور جديدة",
+    resetPasswordDescription: "عيِّن كلمة مرور جديدة لحساب HabitFlow الخاص بك.",
+    verifyEmailTitle: "تأكيد البريد الإلكتروني",
+    verifyEmailDescription: "أكّد عنوان بريدك الإلكتروني لتفعيل حساب HabitFlow.",
   },
   nav: {
     features: "المميزات",
@@ -300,6 +306,7 @@ export const ar: Dictionary = {
       passwordPlaceholder: "••••••••",
       noAccount: "ليس لديك حساب؟",
       createOne: "أنشئ واحدًا",
+      forgot: "نسيت كلمة المرور؟",
     },
     register: {
       title: "أنشئ حسابك",
@@ -313,6 +320,48 @@ export const ar: Dictionary = {
       passwordPlaceholder: "8 أحرف على الأقل",
       haveAccount: "لديك حساب بالفعل؟",
       signIn: "سجّل الدخول",
+      verifyNotice:
+        "أرسلنا لك رابط تأكيد — تحقق من بريدك الوارد. حسابك يبقى نشطًا، لكن التأكيد يثبت أن الحساب لك فعلًا.",
+    },
+    forgotPassword: {
+      title: "استعادة كلمة المرور",
+      subtitle: "أدخل بريدك الإلكتروني وسنرسل لك رابط إعادة التعيين.",
+      email: "البريد الإلكتروني",
+      emailPlaceholder: "you@example.com",
+      submit: "إرسال رابط إعادة التعيين",
+      sentTitle: "تحقق من بريدك الوارد",
+      sentBody:
+        "إذا كان هناك حساب بهذا البريد، فرابط إعادة التعيين في الطريق إليك. ينتهي صلاحيته خلال ساعة واحدة.",
+      demoNotice:
+        "الوضع التجريبي — الواجهة البرمجية غير متاحة هنا. شغّلها بأمر `npm run dev` وسيُطبع رابط إعادة التعيين في سجل الخادم.",
+      backToLogin: "العودة إلى تسجيل الدخول",
+    },
+    resetPassword: {
+      title: "اختر كلمة مرور جديدة",
+      subtitle: "أدخل كلمة مرور جديدة لحسابك.",
+      password: "كلمة المرور الجديدة",
+      passwordPlaceholder: "8 أحرف على الأقل",
+      confirmPassword: "تأكيد كلمة المرور",
+      confirmPlaceholder: "أعد كتابة كلمة المرور",
+      mismatch: "كلمتا المرور غير متطابقتين.",
+      submit: "إعادة تعيين كلمة المرور",
+      successTitle: "تم تحديث كلمة المرور",
+      successBody: "تم تغيير كلمة مرورك وتسجيل خروج جميع جلساتك.",
+      invalidToken: "رابط إعادة التعيين غير صالح أو منتهي الصلاحية.",
+      backToLogin: "تسجيل الدخول",
+    },
+    verifyEmail: {
+      verifying: "جارٍ تأكيد بريدك الإلكتروني…",
+      successTitle: "تم تأكيد البريد الإلكتروني",
+      successBody: "تم تأكيد بريدك. يمكنك الآن تسجيل الدخول.",
+      errorTitle: "فشل التأكيد",
+      errorBody: "هذا الرابط غير صالح أو منتهي الصلاحية.",
+      resend: "إعادة إرسال رسالة التأكيد",
+      resendSent:
+        "إذا كان هناك حساب بهذا البريد، فسيصلك رابط تأكيد جديد.",
+      backToLogin: "الانتقال إلى تسجيل الدخول",
+      demoNotice:
+        "الوضع التجريبي — تأكيد البريد الإلكتروني يحتاج إلى تشغيل الواجهة البرمجية مع قاعدة بيانات.",
     },
   },
   preview: {

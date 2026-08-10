@@ -74,3 +74,31 @@ export function register(
     body: JSON.stringify({ displayName, email, password, locale }),
   });
 }
+
+export function verifyEmail(token: string) {
+  return request<{ verified: boolean }>("/auth/verify-email", {
+    method: "POST",
+    body: JSON.stringify({ token }),
+  });
+}
+
+export function resendVerification(email: string, locale: string) {
+  return request<{ sent: boolean }>("/auth/verify-email/resend", {
+    method: "POST",
+    body: JSON.stringify({ email, locale }),
+  });
+}
+
+export function forgotPassword(email: string, locale: string) {
+  return request<{ sent: boolean }>("/auth/forgot-password", {
+    method: "POST",
+    body: JSON.stringify({ email, locale }),
+  });
+}
+
+export function resetPassword(token: string, password: string) {
+  return request<{ ok: boolean }>("/auth/reset-password", {
+    method: "POST",
+    body: JSON.stringify({ token, password }),
+  });
+}

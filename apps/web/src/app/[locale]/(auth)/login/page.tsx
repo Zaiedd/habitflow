@@ -51,6 +51,14 @@ export default async function LoginPage() {
           </Link>
         </>
       }
+      passwordHint={
+        <Link
+          href={localizePath(loc, "/forgot-password")}
+          className="text-xs font-medium text-primary underline-offset-4 hover:underline"
+        >
+          {dict.auth.login.forgot}
+        </Link>
+      }
     />
   );
 }
