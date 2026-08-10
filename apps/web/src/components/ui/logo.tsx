@@ -9,20 +9,20 @@ export function LogoMark({ className }: { className?: string }) {
       )}
     >
       <svg
-        viewBox="0 0 24 24"
+        viewBox="0 0 48 48"
         fill="none"
         aria-hidden="true"
-        className="h-4 w-4"
+        className="h-5 w-5"
       >
         <path
-          d="M12 3.5c3 3.2 5 6 5 8.7a5 5 0 0 1-10 0c0-2.7 2-5.5 5-8.7Z"
+          d="M24 9.5 C29.5 16 32.5 20 32.5 24.2 C32.5 28.7 28.7 32 24 32 C19.3 32 15.5 28.7 15.5 24.2 C15.5 20 18.5 16 24 9.5 Z"
           fill="currentColor"
-          fillOpacity="0.9"
+          fillOpacity="0.96"
         />
         <path
-          d="M16.5 14.5 19 17l-2.5 2.5M7.5 14.5 5 17l2.5 2.5"
-          stroke="currentColor"
-          strokeWidth="1.6"
+          d="M19 26 L23.2 29.6 L29.8 20.8"
+          stroke="#6366F1"
+          strokeWidth="2.5"
           strokeLinecap="round"
           strokeLinejoin="round"
         />

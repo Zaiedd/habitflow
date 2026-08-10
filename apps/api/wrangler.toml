@@ -1,0 +1,18 @@
+name = "habitflow-api"
+main = "worker.mjs"
+compatibility_date = "2025-09-03"
+compatibility_flags = ["nodejs_compat"]
+
+[vars]
+NODE_ENV = "production"
+CORS_ORIGIN = "http://localhost:3000,https://habitflow-esf.pages.dev"
+EMAIL_FROM = "no-reply@habitflow.app"
+
+# Optional/lazy peer imports inside @nestjs/core & @nestjs/mapped-types that
+# are guarded by try/catch at runtime (Nest only loads them when the
+# microservices/websockets platforms are actually used).
+[alias]
+"@nestjs/microservices" = "./stubs/microservices.ts"
+"@nestjs/microservices/microservices-module" = "./stubs/microservices.ts"
+"@nestjs/websockets/socket-module" = "./stubs/socket-module.ts"
+"class-transformer/storage" = "./stubs/class-transformer-storage.ts"

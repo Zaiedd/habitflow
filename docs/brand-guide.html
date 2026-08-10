@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HabitFlow — Brand Guidelines</title>
+<style>
+  :root {
+    --primary: #4f46e5;
+    --accent: #7c3aed;
+    --indigo-400: #818cf8;
+    --violet-400: #a78bfa;
+    --ink: #17181f;
+    --surface: #fafafa;
+    --dark: #0a0a0c;
+    --muted: #71717a;
+    --line: #e4e4e7;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+    color: var(--ink);
+    background: #fff;
+    line-height: 1.6;
+  }
+  .wrap { max-width: 980px; margin: 0 auto; padding: 0 32px; }
+  header {
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: #fff;
+    padding: 72px 0 56px;
+  }
+  header .logo-row { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; }
+  header h1 { font-size: 42px; font-weight: 700; letter-spacing: -0.5px; }
+  header p { color: #e0e7ff; max-width: 640px; font-size: 17px; }
+  h2 {
+    font-size: 26px; margin: 56px 0 20px; letter-spacing: -0.3px;
+    padding-bottom: 8px; border-bottom: 3px solid var(--primary); display: inline-block;
+  }
+  h3 { font-size: 18px; margin: 24px 0 10px; }
+  p.lead { color: var(--muted); margin-bottom: 16px; }
+  .grid { display: grid; gap: 24px; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
+  .card {
+    border: 1px solid var(--line); border-radius: 12px; padding: 20px;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .logo-stage {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+    padding: 28px; display: flex; align-items: center; justify-content: center; min-height: 140px;
+  }
+  .logo-stage.dark { background: var(--dark); }
+  .swatch { height: 72px; border-radius: 8px; margin-bottom: 10px; border: 1px solid var(--line); }
+  .swatch .hex { color: #fff; font-weight: 600; padding: 48px 12px 0; font-size: 13px; }
+  .swatch .hex.dark-text { color: var(--ink); }
+  .token { font-family: Consolas, monospace; font-size: 13px; }
+  .font-row { display: flex; align-items: baseline; gap: 16px; border-bottom: 1px solid var(--line); padding: 14px 0; }
+  .font-sample { font-size: 30px; flex: 1; }
+  .font-label { color: var(--muted); width: 200px; font-size: 14px; }
+  .do-dont { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .dd { border-radius: 12px; padding: 18px; font-size: 15px; }
+  .dd.ok { background: #ecfdf5; border: 1px solid #a7f3d0; }
+  .dd.no { background: #fef2f2; border: 1px solid #fecaca; }
+  .dd h4 { margin-bottom: 8px; }
+  ul { padding-left: 22px; }
+  li { margin: 6px 0; }
+  code { background: #f4f4f5; border-radius: 4px; padding: 1px 6px; font-size: 13px; }
+  .ar { direction: rtl; text-align: right; font-family: "Segoe UI", system-ui, sans-serif; }
+  .bilingual .en { margin-bottom: 6px; }
+  .bilingual .ar { color: #3f3f46; font-size: 15px; }
+  footer { margin-top: 64px; padding: 28px 0 40px; color: var(--muted); border-top: 1px solid var(--line); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="logo-row">
+      <svg width="52" height="52" viewBox="0 0 48 48" aria-hidden="true">
+        <defs>
+          <linearGradient id="hfg-cover" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#a5b4fc"/><stop offset="1" stop-color="#c4b5fd"/>
+          </linearGradient>
+        </defs>
+        <rect width="48" height="48" rx="12" fill="url(#hfg-cover)"/>
+        <path d="M24 9.5 C29.5 16 32.5 20 32.5 24.2 C32.5 28.7 28.7 32 24 32 C19.3 32 15.5 28.7 15.5 24.2 C15.5 20 18.5 16 24 9.5 Z" fill="#ffffff" fill-opacity="0.96"/>
+        <path d="M19 26 L23.2 29.6 L29.8 20.8" stroke="#4f46e5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      </svg>
+      <div>
+        <div style="font-weight:700;font-size:26px;">HabitFlow</div>
+        <div style="color:#e0e7ff;font-size:14px;">دليل الهوية البصرية · Brand Guidelines</div>
+      </div>
+    </div>
+    <h1>Brand Guidelines</h1>
+    <p>A complete visual identity for HabitFlow — the logo system, color palette, typography, and usage rules. <span class="ar" style="display:inline;font-size:15px;">هوية بصرية متكاملة لـ HabitFlow: نظام الشعار، الألوان، الخطوط، وقواعد الاستخدام.</span></p>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section>
+    <h2>1. The Logo</h2>
+    <p class="lead">HabitFlow is a flame that became a checkmark: the effort of building habits, resolving into achievement. The mark is a flame-teardrop carrying a check, set on a rounded tile with the indigo→violet gradient.</p>
+
+    <h3>Primary mark</h3>
+    <div class="logo-stage">
+      <svg width="120" height="120" viewBox="0 0 48 48" role="img" aria-label="HabitFlow mark">
+        <defs>
+          <linearGradient id="hfg-a" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#6366F1"/><stop offset="1" stop-color="#8B5CF6"/>
+          </linearGradient>
+        </defs>
+        <rect width="48" height="48" rx="12" fill="url(#hfg-a)"/>
+        <path d="M24 9.5 C29.5 16 32.5 20 32.5 24.2 C32.5 28.7 28.7 32 24 32 C19.3 32 15.5 28.7 15.5 24.2 C15.5 20 18.5 16 24 9.5 Z" fill="#ffffff" fill-opacity="0.96"/>
+        <path d="M19 26 L23.2 29.6 L29.8 20.8" stroke="#6366F1" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      </svg>
+    </div>
+    <p><code>brand/logo-mark.svg</code> — the primary mark. Always used on the gradient tile in full color.</p>
+
+    <div class="grid">
+      <div>
+        <h3>Monochrome</h3>
+        <div class="logo-stage">
+          <svg width="120" height="120" viewBox="0 0 48 48" aria-label="HabitFlow mark mono">
+            <path d="M24 3.5 C31 11.4 34.5 16.6 34.5 21.9 C34.5 27.7 29.8 32 24 32 C18.2 32 13.5 27.7 13.5 21.9 C13.5 16.6 17 11.4 24 3.5 Z" fill="#17181F"/>
+            <path d="M17.2 23.2 L22.6 28 L31 17.6" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </svg>
+        </div>
+        <p><code>logo-mark-mono.svg</code> — ink flame, for print / single-color contexts.</p>
+      </div>
+      <div>
+        <h3>On dark</h3>
+        <div class="logo-stage dark">
+          <svg width="120" height="120" viewBox="0 0 48 48" aria-label="HabitFlow mark white">
+            <path d="M24 3.5 C31 11.4 34.5 16.6 34.5 21.9 C34.5 27.7 29.8 32 24 32 C18.2 32 13.5 27.7 13.5 21.9 C13.5 16.6 17 11.4 24 3.5 Z" fill="#ffffff"/>
+            <path d="M17.2 23.2 L22.6 28 L31 17.6" stroke="#8B5CF6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </svg>
+        </div>
+        <p><code>logo-mark-white.svg</code> — white flame + violet check for dark surfaces.</p>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div>
+        <h3>Horizontal / light</h3>
+        <div class="logo-stage">
+          <svg width="230" height="50" viewBox="0 0 220 48" aria-label="HabitFlow">
+            <defs>
+              <linearGradient id="hfg-b" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#6366F1"/><stop offset="1" stop-color="#8B5CF6"/>
+              </linearGradient>
+            </defs>
+            <rect width="48" height="48" rx="12" fill="url(#hfg-b)"/>
+            <path d="M24 9.5 C29.5 16 32.5 20 32.5 24.2 C32.5 28.7 28.7 32 24 32 C19.3 32 15.5 28.7 15.5 24.2 C15.5 20 18.5 16 24 9.5 Z" fill="#ffffff" fill-opacity="0.96"/>
+            <path d="M19 26 L23.2 29.6 L29.8 20.8" stroke="#6366F1" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <text x="62" y="33" font-family="Lexend, 'Segoe UI', sans-serif" font-size="27" font-weight="600" letter-spacing="-0.5" fill="#17181F">HabitFlow</text>
+          </svg>
+        </div>
+        <p><code>logo-horizontal.svg</code> — for light backgrounds (UI, web).</p>
+      </div>
+      <div>
+        <h3>Horizontal / dark</h3>
+        <div class="logo-stage dark">
+          <svg width="230" height="50" viewBox="0 0 220 48" aria-label="HabitFlow dark">
+            <defs>
+              <linearGradient id="hfg-c" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#818CF8"/><stop offset="1" stop-color="#A78BFA"/>
+              </linearGradient>
+            </defs>
+            <rect width="48" height="48" rx="12" fill="url(#hfg-c)"/>
+            <path d="M24 9.5 C29.5 16 32.5 20 32.5 24.2 C32.5 28.7 28.7 32 24 32 C19.3 32 15.5 28.7 15.5 24.2 C15.5 20 18.5 16 24 9.5 Z" fill="#0a0a0c" fill-opacity="0.92"/>
+            <path d="M19 26 L23.2 29.6 L29.8 20.8" stroke="#818CF8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <text x="62" y="33" font-family="Lexend, 'Segoe UI', sans-serif" font-size="27" font-weight="600" letter-spacing="-0.5" fill="#F4F4F5">HabitFlow</text>
+          </svg>
+        </div>
+        <p><code>logo-horizontal-dark.svg</code> — lighter gradient + light wordmark for dark surfaces.</p>
+      </div>
+    </div>
+
+    <h3>Clear space</h3>
+    <p class="lead">Keep a clear space equal to the height of the flame tip (<strong>⅓ of the tile</strong>) on all sides. Never place the logo inside a colored shape, add shadows, stretch, rotate, or recolor the gradient.</p>
+
+    <div class="do-dont">
+      <div class="dd ok">
+        <h4>✓ Do</h4>
+        <ul>
+          <li>Use the full-color tile mark on light surfaces.</li>
+          <li>Use the white / mono variants when color is constrained.</li>
+          <li>Keep the flame tip pointing up.</li>
+        </ul>
+      </div>
+      <div class="dd no">
+        <h4>✗ Don't</h4>
+        <ul>
+          <li>Don't change the gradient direction or colors.</li>
+          <li>Don't add outlines, drop shadows, or 3D effects.</li>
+          <li>Don't stretch, squish, rotate, or crop the flame.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="bilingual">
+      <p class="en lead" style="margin-top:14px;">The check inside the flame must stay legible at small sizes — minimum mark size is 16&nbsp;px (UI) / 8&nbsp;mm (print).</p>
+      <p class="ar">يجب أن تبقى علامة الصحّ داخل اللهب واضحة في الأحجام الصغيرة — أصغر حجم للشعار هو 16 بكسل في الواجهات و8 مم في الطباعة.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>2. Color</h2>
+    <p class="lead">Indigo is the action color; violet is the emotion. The gradient always runs from top-left to bottom-right.</p>
+    <div class="grid">
+      <div class="card">
+        <div class="swatch" style="background:#4f46e5;"><div class="hex">#4F46E5</div></div>
+        <strong>Primary · indigo-600</strong>
+        <div class="token">--primary</div>
+      </div>
+      <div class="card">
+        <div class="swatch" style="background:#7c3aed;"><div class="hex">#7C3AED</div></div>
+        <strong>Accent · violet-600</strong>
+        <div class="token">--accent</div>
+      </div>
+      <div class="card">
+        <div class="swatch" style="background:#818cf8;"><div class="hex">#818CF8</div></div>
+        <strong>Indigo light · 400</strong>
+        <div class="token">dark-mode gradients</div>
+      </div>
+      <div class="card">
+        <div class="swatch" style="background:#a78bfa;"><div class="hex">#A78BFA</div></div>
+        <strong>Violet light · 400</strong>
+        <div class="token">dark-mode gradients</div>
+      </div>
+      <div class="card">
+        <div class="swatch" style="background:#17181f;"><div class="hex">#17181F</div></div>
+        <strong>Ink</strong>
+        <div class="token">--ink · headings/text</div>
+      </div>
+      <div class="card">
+        <div class="swatch" style="background:#fafafa;border:1px solid #e4e4e7;"><div class="hex dark-text">#FAFAFA</div></div>
+        <strong>Surface light</strong>
+        <div class="token">--surface</div>
+      </div>
+      <div class="card">
+        <div class="swatch" style="background:#0a0a0c;"><div class="hex">#0A0A0C</div></div>
+        <strong>Surface dark</strong>
+        <div class="token">--dark</div>
+      </div>
+    </div>
+    <p class="bilingual" style="margin-top:16px;">
+      <span class="en">Contrast: white text on the gradient passes WCAG AA (≥ 4.5:1) against both indigo and violet. Never place primary text on the accent color alone.</span><br>
+      <span class="ar">التباين: النص الأبيض على التدرج يجتاز معيار WCAG AA (4.5:1) مع كلٍّ من النيلي والبنفسجي. لا تضع نصًا أساسيًا على لون التمييز وحده.</span>
+    </p>
+  </section>
+
+  <section>
+    <h2>3. Typography</h2>
+    <div class="font-row">
+      <span class="font-label">Display / headings</span>
+      <span class="font-sample" style="font-family:'Segoe UI',sans-serif;font-weight:700;letter-spacing:-0.5px;">Lexend — عادات تصنع الفرق</span>
+    </div>
+    <div class="font-row">
+      <span class="font-label">Body / UI</span>
+      <span class="font-sample" style="font-family:'Segoe UI',sans-serif;">Inter — Build habits that stick</span>
+    </div>
+    <div class="font-row">
+      <span class="font-label">Arabic</span>
+      <span class="font-sample ar" style="font-family:'Segoe UI',sans-serif;">Noto Sans Arabic — ابنِ عاداتك خطوة بخطوة</span>
+    </div>
+    <p class="lead" style="margin-top:16px;">
+      Stack: <code>Lexend</code> for display, <code>Inter</code> for UI/body, <code>Noto Sans Arabic</code> for Arabic (RTL). Fallback: <code>Segoe UI</code> / system-ui.
+      Headings are <code>font-display</code> (Lexend), tight letter-spacing, semibold→bold. Body is Inter at 15–16px, line-height 1.6.
+    </p>
+  </section>
+
+  <section>
+    <h2>4. Assets & Regeneration</h2>
+    <ul>
+      <li><code>apps/web/public/brand/</code> — logo SVGs + <code>og-image.png</code> (1200×630).</li>
+      <li><code>apps/web/public/</code> — <code>favicon.ico/svg</code>, <code>icon-192.png</code>, <code>icon-512.png</code>, <code>apple-icon.png</code> (180), <code>manifest.webmanifest</code>.</li>
+      <li>Raster assets are generated by <code>scripts/brand/render_logo.py</code> (Python + Pillow). Re-run it after editing the geometry to keep PNGs in sync.</li>
+    </ul>
+    <div class="bilingual">
+      <p class="en lead" style="margin-top:14px;">توليد الأصول النقطية يتم عبر سكربت Pillow — أعد تشغيله بعد أي تعديل على هندسة الشعار.</p>
+      <p class="ar">The flame geometry lives in two places only: the SVGs in <code>public/brand/</code> and <code>flame_polygon()</code> in the render script. Keep them in sync.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    HabitFlow Brand Guidelines · v1.0 · دليل الهوية البصرية
+  </div>
+</footer>
+
+</body>
+</html>

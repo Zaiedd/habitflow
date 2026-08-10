@@ -33,12 +33,30 @@ export function generateStaticParams() {
 export async function generateMetadata(): Promise<Metadata> {
   const loc = await localeParam();
   const dict = getDictionary(loc);
+  const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
   return {
+    metadataBase: siteUrl ? new URL(siteUrl) : undefined,
     title: {
       default: dict.meta.defaultTitle,
       template: "%s · HabitFlow",
     },
     description: dict.meta.defaultDescription,
+    manifest: `${base}/manifest.webmanifest`,
+    icons: {
+      icon: [
+        { url: `${base}/favicon.ico`, sizes: "any" },
+        { url: `${base}/brand/logo-mark.svg`, type: "image/svg+xml" },
+      ],
+      apple: [{ url: `${base}/apple-icon.png`, sizes: "180x180", type: "image/png" }],
+    },
+    openGraph: {
+      title: dict.meta.defaultTitle,
+      description: dict.meta.defaultDescription,
+      type: "website",
+      locale: loc,
+      images: [{ url: `${base}/brand/og-image.png`, width: 1200, height: 630 }],
+    },
   };
 }
 
