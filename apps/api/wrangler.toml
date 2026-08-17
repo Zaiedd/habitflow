@@ -2,6 +2,7 @@ name = "habitflow-api"
 main = "worker.mjs"
 compatibility_date = "2025-09-03"
 compatibility_flags = ["nodejs_compat"]
+account_id = "8a27c998e077879b6d3b3896c4c5a75c"
 
 [vars]
 NODE_ENV = "production"
