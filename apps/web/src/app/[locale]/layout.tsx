@@ -45,17 +45,18 @@ export async function generateMetadata(): Promise<Metadata> {
     manifest: `${base}/manifest.webmanifest`,
     icons: {
       icon: [
-        { url: `${base}/favicon.ico`, sizes: "any" },
-        { url: `${base}/brand/logo-mark.svg`, type: "image/svg+xml" },
+        { url: `${base}/brand/favicon.ico`, sizes: "any" },
+        { url: `${base}/brand/favicon-32.jpeg`, sizes: "32x32", type: "image/jpeg" },
+        { url: `${base}/brand/logo.jpeg`, type: "image/jpeg" },
       ],
-      apple: [{ url: `${base}/apple-icon.png`, sizes: "180x180", type: "image/png" }],
+      apple: [{ url: `${base}/brand/apple-touch-icon.jpeg`, sizes: "180x180", type: "image/jpeg" }],
     },
     openGraph: {
       title: dict.meta.defaultTitle,
       description: dict.meta.defaultDescription,
       type: "website",
       locale: loc,
-      images: [{ url: `${base}/brand/og-image.png`, width: 1200, height: 630 }],
+      images: [{ url: `${base}/brand/og-image.jpeg`, width: 1200, height: 630, type: "image/jpeg" }],
     },
   };
 }
