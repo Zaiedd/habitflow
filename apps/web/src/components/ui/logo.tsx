@@ -9,7 +9,7 @@ export function LogoMark({ className }: { className?: string }) {
       )}
     >
       <img
-        src="/brand/logo.png"
+        src="/brand/logo-small.png"
         alt="HabitFlow logo"
         className="h-full w-full object-cover"
         draggable={false}
